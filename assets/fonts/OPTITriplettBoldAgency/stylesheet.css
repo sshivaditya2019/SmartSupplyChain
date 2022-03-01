@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'OPTITriplettBoldAgency';
+    src: url('OPTITriplettBoldAgency.woff2') format('woff2'),
+        url('OPTITriplettBoldAgency.woff') format('woff'),
+        url('OPTITriplettBoldAgency.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

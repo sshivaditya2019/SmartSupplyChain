@@ -4,15 +4,28 @@
     <meta charset="utf-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="script-src 'self' 'unsafe-inline'"
+      content="script-src 'self' unsafe-inline'"
     />
     <title>Hello Electron React!</title>
   </head>
   <body>
     <div id="root"></div>
   </body>
-  <script>
 
+  <script>
+    const button = document.getElementById('neebut');
+    button.addEventListener('click', () => {
+      createBrowserWindow();
+    });
+    function createBrowserWindow(){
+        const remote = require('@electron/remote/main');
+        const BrowserWindow = remote.BrowserWindow;
+        const win = new BrowserWindow({
+          width: 800,
+          width:800,
+      })
+      win.loadURL("https://github.com");
+    }
     window.electron.ipcRenderer.once('ipc-example', (arg) => {
       console.log(arg);
     });

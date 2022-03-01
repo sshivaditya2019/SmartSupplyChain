@@ -82,7 +82,7 @@ const configuration: webpack.Configuration = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
         exclude: /\.module\.s?(c|a)ss$/,
       },
-      // Fonts
+      // Fontspath.join(webpackPaths.srcRendererPath, 'index.tsx')
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',

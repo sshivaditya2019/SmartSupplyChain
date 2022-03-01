@@ -24,7 +24,7 @@ const devtoolsConfig =
         devtool: 'source-map',
       }
     : {};
-
+console.log(path.join(webpackPaths.srcRendererPath, 'index.tsx'));
 const configuration: webpack.Configuration = {
   ...devtoolsConfig,
 

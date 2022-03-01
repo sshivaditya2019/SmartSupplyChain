@@ -1,4 +1,11 @@
 
+
+@import url('../../../assets/fonts/OPTITriplettBoldAgency/stylesheet.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'OPTITriplettBoldAgency';
+  src: local('OPTITriplettBoldAgency'),url(../../../assets/fonts/OPTITriplettBoldAgency/OPTITriplettBoldAgency.ttf) format('ttf');
+}

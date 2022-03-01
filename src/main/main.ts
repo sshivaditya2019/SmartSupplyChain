@@ -1,3 +1,5 @@
+/* eslint-disable default-case */
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint global-require: off, no-console: off, promise/always-return: off */
 
 /**
@@ -9,11 +11,14 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, Menu, protocol } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+import template from './menu-function';
 import { resolveHtmlPath } from './util';
+
+const PROTOCOL_PREFIX = 'sss';
 
 export default class AppUpdater {
   constructor() {
@@ -32,15 +37,36 @@ ipcMain.on('ipc-example', async (event, arg) => {
 });
 
 ipcMain.on('min', () => {
-  mainWindow?.minimize();
+  const wins = BrowserWindow.getFocusedWindow();
+  wins?.minimize();
+});
+
+ipcMain.handle('getbw', async () => {
+  const bw = BrowserWindow.getFocusedWindow();
+  return bw;
+});
+
+ipcMain.on('login', () => {
+  mainWindow = new BrowserWindow({
+    show: false,
+    width: 1024,
+    height: 728,
+
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+    },
+  });
 });
 
 ipcMain.on('max', () => {
-  mainWindow?.maximize();
+  const wins = BrowserWindow.getFocusedWindow();
+  wins?.maximize();
 });
 
 ipcMain.on('close', () => {
-  mainWindow?.close();
+  const wins = BrowserWindow.getFocusedWindow();
+  wins?.close();
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -93,6 +119,8 @@ const createWindow = async () => {
     },
   });
 
+  require('@electron/remote/main').initialize();
+  require('@electron/remote/main').enable(mainWindow.webContents);
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {
@@ -110,8 +138,8 @@ const createWindow = async () => {
     mainWindow = null;
   });
 
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
+  // const menuBuilder = Menu.buildFromTemplate(template);
+  //  Menu.setApplicationMenu(menuBuilder);
 
   // Open urls in the user's browser
   mainWindow.webContents.setWindowOpenHandler((edata) => {
@@ -136,6 +164,20 @@ app.on('window-all-closed', () => {
   }
 });
 
+app.setAsDefaultProtocolClient('sss');
+let link: string;
+app.on('open-url', function (event, data) {
+  event.preventDefault();
+  link = data;
+  if (mainWindow?.webContents) {
+    mainWindow.webContents.send('open-url', data);
+  }
+  console.log('Protocol Reached');
+  protocol.registerHttpProtocol(PROTOCOL_PREFIX, (req, cb) => {
+    console.log('Called');
+  });
+});
+
 app
   .whenReady()
   .then(() => {
@@ -147,3 +189,5 @@ app
     });
   })
   .catch(console.log);
+
+module.exports.getLink = () => link;

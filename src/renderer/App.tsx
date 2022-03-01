@@ -13,17 +13,11 @@ const Hello = () => {
       <div className="Hello">
         <img width="200px" alt="icon" src={icon} />
       </div>
-      <img alt="ea" src={ea} width="70%" height="80%" />
+      <img alt="ea" src={ea} width="0%" height="80%" />
     </div>
   );
 };
 
 export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Hello />} />
-      </Routes>
-    </Router>
-  );
+  return <Hello />;
 }
