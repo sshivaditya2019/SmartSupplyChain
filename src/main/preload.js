@@ -5,8 +5,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const { BrowserWindow, remote } = require('@electron/remote');
-const { dialog, protocol } = require('electron');
+
+const { dialog, protocol, BrowserWindow } = require('electron');
 const { contextBridge, ipcRenderer, shell } = require('electron');
 
 const PROTOCOL_PREFIX = 'gets';
@@ -19,7 +19,6 @@ function ExecOnAttach() {
 }
 
 function createBrowserWindow(link) {
-  const remote = require('@electron/remote');
   const win = new BrowserWindow({
     width: 800,
     height: 800,

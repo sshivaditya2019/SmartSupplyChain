@@ -18,10 +18,8 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, protocol } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import { initialize, enable as enableRemote } from '@electron/remote/main';
-import { resolveHtmlPath } from './util';
 
-initialize();
+import { resolveHtmlPath } from './util';
 
 const PROTOCOL_PREFIX = 'sss';
 
@@ -124,7 +122,6 @@ const createWindow = async () => {
     },
   });
 
-  enableRemote(mainWindow.webContents);
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {
