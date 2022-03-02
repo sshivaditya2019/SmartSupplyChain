@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable default-case */
 /* eslint-disable @typescript-eslint/no-shadow */
@@ -35,6 +37,7 @@ export default class AppUpdater {
   }
 }
 
+let _configuration: Configuration | null;
 let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, arg) => {

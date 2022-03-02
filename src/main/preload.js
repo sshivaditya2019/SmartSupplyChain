@@ -37,6 +37,7 @@ contextBridge.exposeInMainWorld('electron', {
       openInBrowser(link);
     },
   },
+
   ipcRenderer: {
     myPing() {
       ipcRenderer.send('ipc-example', 'ping');

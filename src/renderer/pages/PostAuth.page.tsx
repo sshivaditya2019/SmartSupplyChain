@@ -16,11 +16,10 @@ import CheckVal from '../actions/auth_val';
 const channel = new BroadcastChannel('auth');
 channel.postMessage(getQueryVariable('code'));
 
-
 const PostAuth = () => {
   const { isAuthenticated } = useAuth0();
   // const [chkc, setChks] = useState(isAuthenticated);
-  CheckVal(0);
+  CheckVal();
   setTimeout(() => {
     console.log('Called');
     console.log(store.getState());

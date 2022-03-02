@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-return-assign */
@@ -93,7 +94,6 @@ export class UIError extends Error {
   public set url(value: string) {
     this._url = value;
   }
-
 
   public setApiErrorDetails(area: string, id: number, utcTime: string): void {
     this._area = area;

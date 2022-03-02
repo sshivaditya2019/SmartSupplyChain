@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable import/extensions */
@@ -7,9 +8,10 @@ const url = require('url');
 // eslint-disable-next-line import/extensions
 const keytar = require('keytar');
 const os = require('os');
-const envVariables = require('../env-variables');
 
-const { apiIdentifier, auth0Domain, clientId } = envVariables;
+const apiIdentifier = process.env.APIID;
+const auth0Domain = process.env.AUTHD;
+const clientId = process.env.CID;
 
 const redirectUri = `https://localhost:1212/auth_callback`;
 const keytarService = 'SmartSupplyChain-openid-oauth';

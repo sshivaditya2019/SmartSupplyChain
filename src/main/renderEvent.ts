@@ -1,3 +1,7 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-unresolved */

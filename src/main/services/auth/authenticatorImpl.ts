@@ -170,7 +170,7 @@ export class AuthenticatorImpl implements Authenticator {
       }
     } catch (e) {
       // Do error translation if required
-      throw ErrorFactory.fromLogoutOperation(e, ErrorCodes.logoutRequestFailed);
+      throw ErrorFactory.fromLogoutOperation(e, ErrorCodes.logoutRequestFaile);
     }
   }
 
