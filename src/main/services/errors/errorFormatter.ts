@@ -8,6 +8,8 @@ import { UIError } from './uiError';
 export class ErrorFormatter {
   private _count = 0;
 
+  SHOW_STACK_TRACE: any;
+
   public getErrorLines(error: UIError): ErrorLine[] {
     const lines: ErrorLine[] = [];
 
@@ -56,7 +58,7 @@ export class ErrorFormatter {
   }
 
   public getErrorStack(error: UIError): ErrorLine | null {
-    if (SHOW_STACK_TRACE) {
+    if (this.SHOW_STACK_TRACE) {
       if (error.stack) {
         return this._createErrorLine('Stack', error.stack);
       }
