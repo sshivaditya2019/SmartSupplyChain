@@ -62,7 +62,7 @@ export class LogoutManager {
   ): Promise<void> {
     // Create a callback to wait for completion
     /* eslint-disable @typescript-eslint/no-unused-vars */
-    const callback = (queryParams: any) => {
+    const callback = (_queryParams: any) => {
       // Complete the promise when the callback is invoked
       onSuccess();
     };

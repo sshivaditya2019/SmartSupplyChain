@@ -4,7 +4,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-const apiIdentifier = process.env.APIID;
 const auth0Domain = process.env.AUTHD;
 const clientId = process.env.CID;
 type MyCompProp = React.PropsWithChildren<{}>;
