@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable default-case */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint global-require: off, no-console: off, promise/always-return: off */
@@ -14,9 +15,15 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain, Menu, protocol } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+import Opener from 'opener';
 import MenuBuilder from './menu';
 import template from './menu-function';
 import { resolveHtmlPath } from './util';
+
+import { Configuration } from './utils/configuration/configuration';
+import { TokenData } from './services/auth/tokenDat';
+import { TokenStorage } from './services/auth/tokenStorage';
+import { IpcEventNames } from './utils/ipcEventNames';
 
 const PROTOCOL_PREFIX = 'sss';
 
@@ -155,6 +162,8 @@ const createWindow = async () => {
 /**
  * Add event listeners...
  */
+
+///
 
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even

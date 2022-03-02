@@ -159,6 +159,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@types/redux-state-sync": "^3.1.2",
     "@types/terser-webpack-plugin": "^5.0.4",
+    "@types/url-parse": "^1.4.8",
     "@types/webpack-env": "^1.16.3",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
@@ -221,7 +222,9 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
     "@electron/remote": "^2.0.5",
+    "@openid/appauth": "^1.3.1",
     "@reduxjs/toolkit": "^1.7.2",
+    "@types/opener": "^1.4.0",
     "auth0": "^2.40.0",
     "axios": "^0.26.0",
     "broadcast-channel": "^4.10.0",
@@ -233,6 +236,7 @@
     "jwt-decode": "^3.1.2",
     "keytar": "^7.9.0",
     "lottie-react": "^2.2.1",
+    "moment": "^2.29.1",
     "path": "^0.12.7",
     "pouchdb": "^7.2.2",
     "react": "^17.0.2",
@@ -246,6 +250,8 @@
     "redux-state-sync": "^3.1.2",
     "redux-toolkit": "^1.1.2",
     "tailwindcss": "^3.0.23",
+    "url-parse": "^1.5.10",
+    "username": "^6.0.0",
     "webfontloader": "^1.6.28"
   },
   "devEngines": {
