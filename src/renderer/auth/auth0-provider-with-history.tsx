@@ -4,10 +4,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-const envVariables = require('../env-variables.json');
-
-const { apiIdentifier, auth0Domain, clientId } = envVariables;
-
+const apiIdentifier = process.env.APIID;
+const auth0Domain = process.env.AUTHD;
+const clientId = process.env.CID;
 type MyCompProp = React.PropsWithChildren<{}>;
 const Auth0ProviderWithHistory = ({ children }: MyCompProp) => {
   const domain = auth0Domain;

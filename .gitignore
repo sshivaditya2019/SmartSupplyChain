@@ -30,3 +30,4 @@ npm-debug.log.*
 
 .CHANGELOG.md
 .CODE_OF_CONDUCT.md
+.erb/configs/.env

@@ -3,8 +3,10 @@
  */
 
 import webpack from 'webpack';
+import path from 'path';
 import webpackPaths from './webpack.paths';
 import { dependencies as externals } from '../../release/app/package.json';
+const Dotenv = require('dotenv-webpack');
 
 const configuration: webpack.Configuration = {
   externals: [...Object.keys(externals || {})],
@@ -47,7 +49,12 @@ const configuration: webpack.Configuration = {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
+    new Dotenv({
+      path: path.resolve(__dirname,'.env'),
+      safe: false
+    })
   ],
 };
 
+console.log(process.env.LOAD);
 export default configuration;
