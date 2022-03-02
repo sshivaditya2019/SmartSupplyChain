@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable global-require */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { BrowserWindow, remote } = require('@electron/remote');
 const { dialog, protocol } = require('electron');
 const { contextBridge, ipcRenderer, shell } = require('electron');
@@ -30,7 +32,7 @@ function openInBrowser(link) {
   shell.openExternal(link);
 }
 
-contextBridge.exposeInMainWorld('electron', {
+contextBridge.exposeInMainWorld('trons', {
   bws: {
     getWin(link) {
       // const winss = createBrowserWindow(link);

@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -14,18 +15,13 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain, Menu, protocol } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, protocol } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import Opener from 'opener';
-import MenuBuilder from './menu';
-import template from './menu-function';
+import { initialize, enable as enableRemote } from '@electron/remote/main';
 import { resolveHtmlPath } from './util';
 
-import { Configuration } from './utils/configuration/configuration';
-import { TokenData } from './services/auth/tokenDat';
-import { TokenStorage } from './services/auth/tokenStorage';
-import { IpcEventNames } from './utils/ipcEventNames';
+initialize();
 
 const PROTOCOL_PREFIX = 'sss';
 
@@ -37,7 +33,6 @@ export default class AppUpdater {
   }
 }
 
-let _configuration: Configuration | null;
 let mainWindow: BrowserWindow | null = null;
 
 ipcMain.on('ipc-example', async (event, arg) => {
@@ -129,8 +124,7 @@ const createWindow = async () => {
     },
   });
 
-  require('@electron/remote/main').initialize();
-  require('@electron/remote/main').enable(mainWindow.webContents);
+  enableRemote(mainWindow.webContents);
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
   mainWindow.on('ready-to-show', () => {
@@ -185,7 +179,7 @@ app.on('open-url', function (event, data) {
     mainWindow.webContents.send('open-url', data);
   }
   console.log('Protocol Reached');
-  protocol.registerHttpProtocol(PROTOCOL_PREFIX, (req, cb) => {
+  protocol.registerHttpProtocol(PROTOCOL_PREFIX, () => {
     console.log('Called');
   });
 });
