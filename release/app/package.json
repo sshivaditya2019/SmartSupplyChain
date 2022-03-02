@@ -14,9 +14,13 @@
     "postinstall": "npm run electron-rebuild && npm run link-modules"
   },
   "dependencies": {
+    "@swc/core": "^1.2.147",
     "@types/opener": "^1.4.0",
+    "esbuild": "^0.14.23",
     "keytar": "^7.9.0",
-    "superagent-proxy": "^3.0.0"
+    "superagent-proxy": "^3.0.0",
+    "uglify-js": "^3.15.2",
+    "webpack-dotenv": "^0.0.2"
   },
   "license": "MIT"
 }
